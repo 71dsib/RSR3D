@@ -10,6 +10,7 @@ This engine features
 - FXAA Anti Aliasing
 - Basic Model Transformation Functions
 - Triangle Clipping
+- Smooth & Flat Shading
 ## Optimizations
 I was able to optimize this engine with Multithreaded Tiled Rendering, using OpenMP for the multithreading.
 ## Screenshots
