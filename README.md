@@ -22,4 +22,4 @@ You can build it by downloading the source files and compiling it or you can dow
 - I did this to understand how a computer is able to run 3D graphics.  
 
 **What am I going to do with this?**  
-- I plan on using this in a simple game engine I made to capture the feel of early software rendered games while having some newer features of modern games.
+- I plan on using this in a simple game engine I'm planning to make to capture the feel of early software rendered games while having some newer features of modern games.
