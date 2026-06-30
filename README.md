@@ -1,4 +1,4 @@
-# RSR3D Software Renderer
+# SR3D Software Renderer
 ## Overview
 A relatively complex software renderer I wrote in C++ relying on no external dependencies besides OpenMP.
 ## Features
