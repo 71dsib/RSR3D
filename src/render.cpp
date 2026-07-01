@@ -1,4 +1,4 @@
-#include "sr3d.h"
+#include "call.h"
 
 
 namespace antiAlias{
@@ -247,13 +247,6 @@ namespace render{
             zBuffer[i] = 1000000.0f;
         }
     }
-    vectorFunctions::Vector3D subtract3D(const render::Point3D& v0, const render::Point3D& v1){
-        return {v0.x - v1.x, v0.y - v1.y, v0.z - v1.z};
-    }
-
-    vectorFunctions::Vector3D subtract3D(const vectorFunctions::Vector3D& v0, const vectorFunctions::Vector3D& v1){
-        return {v0.x - v1.x, v0.y - v1.y, v0.z - v1.z};
-    }
 
     float edgeFunction(const Point2D& a, const Point2D& b, const Point2D& c){
         // This is basically Shoelace's Formula to find area of triangle with only its points, but it is signed depending on if the points are clockwise or not & doubled //
@@ -297,7 +290,7 @@ namespace render{
             neighborBY = sampleY + 1;
         }
         float fragWidth {std::abs(shadowMap.buffer[neighborBY*shadowMap.width+sampleX] - shadowMap.buffer[sampleY*shadowMap.width+neighborAX]) + std::abs(shadowMap.buffer[neighborBY*shadowMap.width+sampleX] - shadowMap.buffer[sampleY*shadowMap.width+sampleX])};
-        float bias {0.055f + fragWidth};
+        float bias {0.055 + fragWidth};
         if((lightPixel.sZ - spotLight.position.z) < shadowMap.buffer[sampleY*shadowMap.width+sampleX] + bias){
             return 1.0f;
         }else{
@@ -434,7 +427,6 @@ namespace render{
                 float cZ1 {p1.sZ - cameraZ};
                 float cZ2 {p2.sZ - cameraZ};
 
-                coordinates::triangleCount += 1;
 
                 for(int y = minY; y <= maxY; y++){
                     for(int x = minX; x <= maxX; x++){
@@ -494,11 +486,10 @@ namespace render{
 namespace transform{
     void rotateModelXY(render::model::Model& model, float rotate){
         static constexpr float radian {3.141f/180.0f};
-        const float cosRotate {std::cos(rotateRadians)};
-        const float sinRotate {std::sin(rotateRadians)};
-        
         for(int i {0}; i < model.points.size(); i++){
             float rotateRadians {rotate * radian};
+            const float cosRotate {std::cos(rotateRadians)};
+            const float sinRotate {std::sin(rotateRadians)};
 
             render::Point3D& point {model.points[i]};
             render::Point3D& centerPoint {model.center};
@@ -512,12 +503,10 @@ namespace transform{
     }
     void rotateModelXZ(render::model::Model& model, float rotate){
         static constexpr float radian {3.141f/180.0f};
-        
-        const float cosRotate {std::cos(rotateRadians)};
-        const float sinRotate {std::sin(rotateRadians)};
-        
         for(int i {0}; i < model.points.size(); i++){
             float rotateRadians {rotate * radian};
+            const float cosRotate {std::cos(rotateRadians)};
+            const float sinRotate {std::sin(rotateRadians)};
 
             render::Point3D& point {model.points[i]};
             render::Point3D& centerPoint {model.center};
@@ -531,10 +520,10 @@ namespace transform{
     }
     void rotateModelYZ(render::model::Model& model, float rotate){
         static constexpr float radian {3.141f/180.0f};
-        const float cosRotate {std::cos(rotateRadians)};
-        const float sinRotate {std::sin(rotateRadians)};
         for(int i {0}; i < model.points.size(); i++){
             float rotateRadians {rotate * radian};
+            const float cosRotate {std::cos(rotateRadians)};
+            const float sinRotate {std::sin(rotateRadians)};
 
             render::Point3D& point {model.points[i]};
             render::Point3D& centerPoint {model.center};
