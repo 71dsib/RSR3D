@@ -1,4 +1,4 @@
-#include "sr3d.h"
+#include "call.h"
 
 namespace vectorFunctions{
     float dotProduct(const Vector3D& v0, const Vector3D& v1){
@@ -9,6 +9,9 @@ namespace vectorFunctions{
     }
     Vector3D add3D(const Vector3D& v0, const Vector3D& v1){
         return {v0.x + v1.x, v0.y + v1.y, v0.z + v1.z};
+    }
+    vectorFunctions::Vector3D subtract3D(const vectorFunctions::Vector3D& v0, const vectorFunctions::Vector3D& v1){
+        return {v0.x - v1.x, v0.y - v1.y, v0.z - v1.z};
     }
     Vector3D divide3D(const Vector3D& v, const float divisor){
         return {v.x / divisor, v.y / divisor, v.z / divisor};
